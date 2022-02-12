@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Triangle : Cube
+public class Cylinder : Cube
 {
-    string name;
-    Color color;
-
-    public Triangle() { name = "Triangle"; color = Color.white; }
+    private void Awake()
+    {
+        name = "Cylinder";
+        color = Color.white;
+    }
 
     public override string GetShape()
     {

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public abstract class Shape : MonoBehaviour
 {
-    protected string name = "Default";
     protected Color color;
 
-   public virtual string GetShape()
+    public virtual string GetShape()
     {
         return name;
     }
