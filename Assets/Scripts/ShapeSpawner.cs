@@ -18,6 +18,7 @@ public class ShapeSpawner : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
             shapes = new List<GameObject>();
             // ABSTRACTION
             SpawnRandomShapeObjects();
