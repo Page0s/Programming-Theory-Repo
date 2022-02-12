@@ -25,6 +25,7 @@ public class Capsule : Shape
         {
             gameObject.SetActive(false);
             ShapeSpawner.Instance.SpawnNewShape();
+            GameManager.Instance.IncreaseFuel();
         }
     }
 }

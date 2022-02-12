@@ -25,6 +25,7 @@ public class Sphere : Shape
         {
             gameObject.SetActive(false);
             ShapeSpawner.Instance.SpawnNewShape();
+            GameManager.Instance.IncreaseFuel();
         }
     }
 }

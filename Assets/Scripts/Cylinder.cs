@@ -25,6 +25,7 @@ public class Cylinder : Cube
         {
             gameObject.SetActive(false);
             ShapeSpawner.Instance.SpawnNewShape();
+            GameManager.Instance.IncreaseFuel();
         }
     }
 }
