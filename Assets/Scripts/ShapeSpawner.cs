@@ -19,24 +19,31 @@ public class ShapeSpawner : MonoBehaviour
         {
             Instance = this;
             shapes = new List<GameObject>();
-
-            for(int i = 0; i < rows; ++i)
-            {
-                for(int j = 0; j < columns; ++j)
-                {
-                    GameObject shape = Instantiate(shapeList[Random.Range(0, shapeList.Count)]);
-                    shape.SetActive(true);
-                    shape.transform.position = firstSpawn;
-                    firstSpawn.x += 2f;
-                    shapes.Add(shape);
-                }
-                firstSpawn.x = -2f;
-                firstSpawn.y -= 2f; 
-            }
+            // ABSTRACTION
+            SpawnRandomShapeObjects();
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void SpawnRandomShapeObjects()
+    {
+        for (int i = 0; i < rows; ++i)
+        {
+            for (int j = 0; j < columns; ++j)
+            {
+                // POLYMORPHISM
+                // Here spawn new shapes and they are taking random shapes from preselected list of shapes
+                GameObject shape = Instantiate(shapeList[Random.Range(0, shapeList.Count)]);
+                shape.SetActive(true);
+                shape.transform.position = firstSpawn;
+                firstSpawn.x += 2f;
+                shapes.Add(shape);
+            }
+            firstSpawn.x = -2f;
+            firstSpawn.y -= 2f;
         }
     }
 
@@ -54,7 +61,10 @@ public class ShapeSpawner : MonoBehaviour
                 Destroy(shape);
             }
         });
+
         shapes.RemoveAt(index);
+        // POLYMORPHISM
+        // Here spawn new shapes and they are taking random shapes from preselected list of shapes
         GameObject shape = Instantiate(shapeList[Random.Range(0, shapeList.Count)]);
         shape.transform.position = position;
         shape.transform.rotation = Quaternion.identity;

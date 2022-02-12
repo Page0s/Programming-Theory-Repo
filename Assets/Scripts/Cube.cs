@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+// INHERITANCE inherited class
 [RequireComponent(typeof(MeshRenderer))]
 public class Cube : Shape
 {
@@ -13,6 +14,7 @@ public class Cube : Shape
         meshRenderer.material.color = GetRandomColor();
     }
 
+    // ENCAPSULATION
     public override string GetShape()
     {
         return name;

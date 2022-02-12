@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE inherited class
 [RequireComponent(typeof(MeshRenderer))]
 public class Sphere : Shape
 {
@@ -12,6 +13,7 @@ public class Sphere : Shape
         meshRenderer.material.color = GetRandomColor();
     }
 
+    // ENCAPSULATION
     public override string GetShape()
     {
         return name;

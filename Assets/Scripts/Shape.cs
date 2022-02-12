@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE base class
 public abstract class Shape : MonoBehaviour
 {
     protected MeshRenderer meshRenderer;
@@ -16,11 +17,13 @@ public abstract class Shape : MonoBehaviour
         return colors[Random.Range(0, colors.Count)];
     }
 
+    // ENCAPSULATION
     public virtual string GetShape()
     {
         return name;
     }
 
+    // ENCAPSULATION
     public virtual Color GetColor()
     {
         return meshRenderer.material.color;
