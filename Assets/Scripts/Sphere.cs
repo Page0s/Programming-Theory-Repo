@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshRenderer))]
 public class Sphere : Shape
 {
     private void Awake()
     {
         name = "Sphere";
-        color = Color.white;
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.material.color = GetRandomColor();
     }
 
     public override string GetShape()
@@ -15,8 +17,12 @@ public class Sphere : Shape
         return name;
     }
 
-    public override Color GetColor()
+    private void OnMouseDown()
     {
-        return color;
+        if (Input.GetMouseButtonDown(0))
+        {
+            gameObject.SetActive(false);
+            ShapeSpawner.Instance.SpawnNewShape();
+        }
     }
 }

@@ -4,7 +4,17 @@ using UnityEngine;
 
 public abstract class Shape : MonoBehaviour
 {
-    protected Color color;
+    protected MeshRenderer meshRenderer;
+
+    protected Color GetRandomColor()
+    {
+        List<Color> colors = new List<Color>() 
+        { 
+            Color.white, Color.green, Color.blue, Color.cyan, Color.magenta, Color.red, Color.yellow 
+        };
+
+        return colors[Random.Range(0, colors.Count)];
+    }
 
     public virtual string GetShape()
     {
@@ -13,6 +23,6 @@ public abstract class Shape : MonoBehaviour
 
     public virtual Color GetColor()
     {
-        return color;
+        return meshRenderer.material.color;
     }
 }

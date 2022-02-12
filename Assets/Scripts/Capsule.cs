@@ -2,20 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshRenderer))]
 public class Capsule : Shape
 {
     private void Awake()
     {
         name = "Capsule";
-        color = Color.white;
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.material.color = GetRandomColor();
     }
+
     public override string GetShape()
     {
         return name;
     }
 
-    public override Color GetColor()
+    private void OnMouseDown()
     {
-        return color;
+        if (Input.GetMouseButtonDown(0))
+        {
+            gameObject.SetActive(false);
+            ShapeSpawner.Instance.SpawnNewShape();
+        }
     }
 }
