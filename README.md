@@ -11,14 +11,21 @@ successful submission will include:
 
 ### PROJECT SUMMARY
 
-While developing for every frature I was creating new branch and when this feature was complete I would merge this new branch to main.
+While developing for every feature I was creating a new branch and when this feature was complete I would merge this new branch to the main.
 The workflow was:
 
-  - Create new branch and switch to it
-  - create nessesary commites to the branch to complete feature
-  - when feature was complete switch to main
-  - then mearge finished frature breanch to thr main branch
-  - push new changes to main on gitHub repo
+  - Create a new branch and switch to it
+  - create necessary commits to the branch to complete feature
+  - when the feature was complete switch to the main
+  - then merge the finished feature branch to the main branch
+  - push new changes to main on GitHub repo
 
-I did not expct there will be no record about merged branches. All my commites look like they came from main branch.
-This issue can be avoided by pushing new branch to online repo and then when feature from this branch is finished the pull request must be created to main branch.
+I did not expect there will be no record about merged branches. All my commits look like they came from the main branch.
+This issue can be avoided by pushing the new branch to the online repo and then when the feature from this branch is finished the pull request must be created to the main branch.
+
+The correct way of "Git-Flow" workflow is:
+  
+  1. Create a new feature branch in my example "update-project-readme"
+  2. Create/finish new feature with commit's
+  3. Create pull-request for merging new branch to "main" <- "update-project-readme"
+  4. Confirm merging
