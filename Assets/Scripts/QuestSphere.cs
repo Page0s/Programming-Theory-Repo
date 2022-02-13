@@ -2,7 +2,7 @@ using UnityEngine;
 
 // INHERITANCE inherited class
 [RequireComponent(typeof(MeshRenderer))]
-public class Sphere : Shape
+public class QuestSphere : Shape
 {
     private void Awake()
     {
@@ -17,18 +17,9 @@ public class Sphere : Shape
         return name;
     }
 
+    // ENCAPSULATION
     public override Color GetColor()
     {
         return meshRenderer.material.color;
-    }
-
-    private void OnMouseDown()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            gameObject.SetActive(false);
-            ShapeSpawner.Instance.SpawnNewShape();
-            GameManager.Instance.CheckIfQuestCorrect(GetShape(), GetColor());
-        }
     }
 }

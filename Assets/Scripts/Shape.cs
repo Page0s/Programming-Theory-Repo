@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +8,9 @@ public abstract class Shape : MonoBehaviour
 
     protected Color GetRandomColor()
     {
-        List<Color> colors = new List<Color>() 
-        { 
-            Color.white, Color.green, Color.blue, Color.cyan, Color.magenta, Color.red, Color.yellow 
+        List<Color> colors = new List<Color>()
+        {
+            Color.white, Color.green, Color.blue, Color.cyan, Color.magenta, Color.red, Color.yellow
         };
 
         return colors[Random.Range(0, colors.Count)];

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,18 +14,12 @@ public class ShapeSpawner : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
-        {
+        if (Instance == null)
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-            shapes = new List<GameObject>();
-            // ABSTRACTION
-            SpawnRandomShapeObjects();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        shapes = new List<GameObject>();
+        // ABSTRACTION
+        SpawnRandomShapeObjects();
     }
 
     private void SpawnRandomShapeObjects()
@@ -37,8 +30,7 @@ public class ShapeSpawner : MonoBehaviour
             {
                 // POLYMORPHISM
                 // Here spawn new shapes and they are taking random shapes from preselected list of shapes
-                GameObject shape = Instantiate(shapeList[Random.Range(0, shapeList.Count)]);
-                shape.SetActive(true);
+                GameObject shape = InstantiateNewShapeObject();
                 shape.transform.position = firstSpawn;
                 firstSpawn.x += 2f;
                 shapes.Add(shape);
@@ -46,6 +38,30 @@ public class ShapeSpawner : MonoBehaviour
             firstSpawn.x = -2f;
             firstSpawn.y -= 2f;
         }
+    }
+
+    // ABSTRACTION
+    private GameObject InstantiateNewShapeObject()
+    {
+        GameObject shape = Instantiate(shapeList[Random.Range(0, shapeList.Count)]);
+        shape.SetActive(true);
+        return shape;
+    }
+
+    public void RespawnAllShapes()
+    {
+        // ABSTRACTION
+        DestroyAllShapesInScene();
+
+        shapes.Clear();
+        firstSpawn = new Vector3(-2f, 2f, 0f);
+        SpawnRandomShapeObjects();
+    }
+
+    private void DestroyAllShapesInScene()
+    {
+        foreach (GameObject shape in shapes)
+            Destroy(shape);
     }
 
     public void SpawnNewShape()

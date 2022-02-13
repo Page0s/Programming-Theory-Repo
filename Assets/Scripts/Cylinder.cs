@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // INHERITANCE inherited class
@@ -19,13 +17,18 @@ public class Cylinder : Cube
         return name;
     }
 
+    public override Color GetColor()
+    {
+        return meshRenderer.material.color;
+    }
+
     private void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(0))
         {
             gameObject.SetActive(false);
             ShapeSpawner.Instance.SpawnNewShape();
-            GameManager.Instance.IncreaseFuel();
+            GameManager.Instance.CheckIfQuestCorrect(GetShape(), GetColor());
         }
     }
 }
