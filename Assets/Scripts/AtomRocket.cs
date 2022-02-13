@@ -44,4 +44,9 @@ public class AtomRocket : MonoBehaviour
         if (transform.position == finalPositionY)
             isLaunching = false;
     }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnFuelMax -= GameManager_OnFuelMax;
+    }
 }

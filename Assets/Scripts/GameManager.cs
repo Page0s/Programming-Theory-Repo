@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Transform fuelBar;
     [SerializeField] GameObject endGame;
+    [SerializeField] CameraShake cameraShake;
     public static GameManager Instance { get; private set; }
     public event EventHandler OnFuelMax;
 
@@ -80,5 +81,10 @@ public class GameManager : MonoBehaviour
             QuestCombination.Instance.DestroyCurrentShape();
             QuestCombination.Instance.SpawnNewRandomShape();
         }
+    }
+
+    private void OnDisable()
+    {
+        OnFuelMax += GameManager_OnFuelMax;
     }
 }
